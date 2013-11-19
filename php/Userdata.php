@@ -29,9 +29,6 @@ class Userdata
 
     protected function _retrieve($sName)
     {
-        print_r(array_keys($this->aUserData));
-        print_r($sName);
-
         if (array_key_exists($sName,$this->aUserData)) {
             print "found";
             return $this->aUserData[$sName];
@@ -68,6 +65,7 @@ class Userdata
 function safe_out($Data,$sTemplate='',$sContext='HTML') {
     $aValues=array();
     $aClean=array();
+    print "$sData $sContext";
     if ( ! is_array($Data) ) {
         $aValues['data']=$Data;
     } else {
