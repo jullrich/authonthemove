@@ -1,6 +1,7 @@
 <?php
 
 require_once('../php/Userdata.php');
+print_r($_POST);
 $oUserData=new Userdata();
 $sUsername=$oUserData->get_alphanum('username');
 $nNumDots=$oUserData->get_int('numdots',3,20);
