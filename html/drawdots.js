@@ -1,4 +1,7 @@
-var drawdotson=0;
+/**
+ * This file contains javascript to draw the array of dots
+ */
+
 var lastdotx;
 var lastdoty;
 var context;
@@ -30,7 +33,8 @@ function senddots() {
 }
 
 function drawdots() {
-	var dots=document.getElementById('dots');
+	var swidth;
+    var dots=document.getElementById('dots');
 	var width=parseInt(window.innerWidth);
 	var height=parseInt(window.innerHeight);
 	var dotspos=dots.getBoundingClientRect();
@@ -44,10 +48,7 @@ function drawdots() {
 	dots.width=width;
 	//noinspection JSSuspiciousNameCombination
     dots.height=width;
-	var swidth=width.toString();
-
-	swidth=width+'px';
-
+    swidth = width.toString()+'px';
 	dots.style.width=swidth;
 	dots.style.height=swidth;
 
@@ -97,7 +98,7 @@ function connectdot(x,y) {
   var dotxn=Math.round(dotx);
   var dotyn=Math.round(doty);
 
-  var start=0;
+
 
   if ( Math.sqrt((dotxn-dotx)^2+(dotyn-doty)^2) > 0.5 ) {
 	  
@@ -126,7 +127,6 @@ function connectdot(x,y) {
 	  drawlines();
 	  lastdotx=dotxn;
 	  lastdoty=dotyn;
-	  start=0;
 	  
     }
   }
@@ -153,11 +153,13 @@ function dotline(x1, y1, x2, y2) {
 }
 
 function drawlines() {
-	if (pattern.length<4) {
+	var xold;
+    var yold;
+    if (pattern.length<4) {
 		return;
 	}
-	var xold=pattern[0];
-	var yold=pattern[1];
+    xold = pattern[0];
+    yold = pattern[1];
 	for (var i = 2; i < pattern.length; i+=2) {
     	var x = pattern[i];
 		var y = pattern[i+1];

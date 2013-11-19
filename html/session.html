@@ -7,10 +7,11 @@
 <body>
 <h1>AuthOnTheMove: Session Storage</h1>
 <div>
-Open this page twice. Each browser window will use it's own session and you may log in as two different users. Any username/password combination will work. Usernames have to be alphanumeric.
+Open this page twice. Each browser window will use it's own session and you may log in as two different users. Any username/password combination will work.
+    Usernames have to be alphanumeric.
 <form>
-    <label for="username" required pattern="[A-Z0-9]+">Username</label>
-    <input type="username" name="username" id="username" value="">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" value="" required pattern="[A-Za-z0-9]+" >
     <label for="password">Password</label>
     <input type="password" name="password" id="password" value="" autocomplete="off">
     <input type="submit" value="Submit">
