@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link href="authonthemove.css" rel="stylesheet" type="text/css">
+<title>AuthOnTheMove: Using Session Storage to &quot;harden&quot; Sessions.</title>
+</head>
+<body>
+<h1>AuthOnTheMove: Session Storage</h1>
+<div>
+Open this page twice. Each browser window will use it's own session and you may log in as two different users. Any username/password combination will work. Usernames have to be alphanumeric.
+<form>
+    <label for="username" required pattern="[A-Z0-9]+">Username</label>
+    <input type="username" name="username" id="username" value="">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" value="" autocomplete="off">
+    <input type="submit" value="Submit">
+</form>
+</div>
+
+</body>
+</html>
