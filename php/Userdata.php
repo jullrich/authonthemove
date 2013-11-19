@@ -38,9 +38,12 @@ class Userdata
     public function get_int($sName, $nMin = 0, $nMax = PHP_INT_MAX)
     {
         $sValue = $this->_retrieve($sName);
+        print $sValue;
         if ( $sValue && is_int($sValue) && $sValue>=$nMin && $sValue<=$nMax ) {
+            print "passed";
             return $sValue;
         }
+        print "failed";
         return false;
     }
 
