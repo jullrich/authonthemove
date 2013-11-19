@@ -31,7 +31,8 @@ class Userdata
     {
         print_r(array_keys($this->aUserData));
         print_r($sName);
-        if (array_key_exists($this->aUserData, $sName)) {
+
+        if (array_key_exists($sName,$this->aUserData)) {
             print "found";
             return $this->aUserData[$sName];
         }
