@@ -40,10 +40,8 @@ class Userdata
         $sValue = $this->_retrieve($sName);
 
         if ( is_numeric($sValue) && $sValue==intval($sValue) && $sValue>=$nMin && $sValue<=$nMax ) {
-            print "passed";
             return $sValue;
         }
-        print "failed";
         return false;
     }
 
