@@ -39,7 +39,7 @@ class Userdata
     {
         $sValue = $this->_retrieve($sName);
         print $sValue;
-        if ( $sValue && is_int($sValue) && $sValue>=$nMin && $sValue<=$nMax ) {
+        if ( is_int($sValue) && $sValue>=$nMin && $sValue<=$nMax ) {
             print "passed";
             return $sValue;
         }
