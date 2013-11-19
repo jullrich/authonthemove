@@ -1,7 +1,6 @@
 <?php
 
 require_once('../php/Userdata.php');
-print_r($_POST);
 $oUserData=new Userdata();
 $sUsername=$oUserData->get_alphanum('username');
 $nNumDots=$oUserData->get_int('numdots',3,20);
@@ -17,6 +16,9 @@ $sPattern=$oUserData->get_regextext('pattern','/^[0-9|]+$/');
 <p>
 You enrolled into our system. You submitted the following information:
 </p>
+<?php
+print $sUsername;
+?>
 <table>
     <tr><td>Username:</td><td><?php safe_out($sUsername) ?></td></tr>
     <tr><td>Grid Size:</td><td><?php safe_out($nNumDots) ?></td></tr>
