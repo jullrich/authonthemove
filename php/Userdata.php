@@ -59,4 +59,53 @@ class Userdata
         return false;
     }
 
-} 
+}
+
+function safe_out($Data,$sTemplate='',$sContext='HTML') {
+    $aValues=array();
+    $aClean=array();
+    if ( ! is_array($Data) ) {
+        $aValues['data']=$Data;
+    } else {
+        $aValues=$Data;
+    }
+    foreach ( $aValues as $sKey=>$sValue ) {
+        /** @var $aClean array */
+        /** @var $sValue string */
+        $aClean[$sKey]=safe_encode($sValue,$sContext);
+    }
+    if ( $sTemplate=='' ) {
+        return join('',array_values($aClean));
+    }
+    foreach ( $aClean as $sKey=>$sValue ) {
+        preg_replace("/%%$sKey%%/",$sValue,$sTemplate);
+    }
+    $sTemplate=preg_replace('/%%[^%]+%%/','',$sTemplate);
+    return $sTemplate;
+}
+
+/**
+ *
+ *   This function is used to encode strings appropriately for a particular output context.
+ * TODO: add additional contexts.
+ *
+ * @param $sString
+ * @param $sContext
+ * @return bool|string
+ *
+ */
+
+function safe_encode($sString,$sContext) {
+    switch ($sContext) {
+        case "HTML":
+            return htmlentities($sString,ENT_QUOTES,"UTF-8");
+        case "JS":
+            return "";
+        case "CSS":
+            return "";
+        case "ATTRIBUTE":
+            return "";
+    }
+    return false;
+}
+
