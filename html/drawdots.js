@@ -5,15 +5,9 @@ var context;
 var dotnum;
 var dotsize;
 var dotspace;
-var pattern=new Array();
+var pattern=[];
 
-function toggledots() {
-    if (drawdotson==0 ) {
-	drawdotson=1;
-    } else {
-	drawdotson=0;
-    }
-}
+
 
 function circle(x,y,radius,color) {
 	context.beginPath();
@@ -25,18 +19,10 @@ function circle(x,y,radius,color) {
 	context.stroke();	
 }
 
-function rectangle(xmin,ymin,xmax,ymax,color) {
-	context.beginPath();
-    context.rect(xmin, ymin, xmax, ymax);
-      // context.fillStyle = 'yellow';
-      // context.fill();
-      context.lineWidth = 1;
-      context.strokeStyle = color;
-      context.stroke();
-}
+
 
 function senddots() {
-    var patternstring;
+    var patternstring='';
     for (var i = 0; i < pattern.length; i+=1) {
         patternstring=patternstring+'|'+pattern[i];
     }
@@ -50,15 +36,15 @@ function drawdots() {
 	var dotspos=dots.getBoundingClientRect();
 	var yspace=height-parseInt(dotspos.top);
 	dotnum=document.getElementById('numdots').value;
-	var dotgrid='';
 	dotnum=parseInt(dotnum);
 	if ( yspace<width) {
 		width=yspace;
 	}
 	width=Math.floor(width*0.9);
 	dots.width=width;
-	dots.height=width;
-	swidth=width.toString();
+	//noinspection JSSuspiciousNameCombination
+    dots.height=width;
+	var swidth=width.toString();
 
 	swidth=width+'px';
 
@@ -90,13 +76,7 @@ function drawdots() {
 }
 
 
-function writeMessage(canvas, message) {
-        var context = canvas.getContext('2d');
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.font = '10pt Calibri';
-        context.fillStyle = 'black';
-        context.fillText(message, 10, 25);
-      }
+
       function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
         return {
@@ -106,23 +86,19 @@ function writeMessage(canvas, message) {
       }
 
 
-function handleStart() {
-    connectdot(this);
-}
-
-function handleMove() {
-    connectdot(this);
-}
 
 
 
 function connectdot(x,y) {
   var dotx=coordn(x);
-  var doty=coordn(y);
+  //noinspection JSSuspiciousNameCombination
+    var doty=coordn(y);
   
   var dotxn=Math.round(dotx);
   var dotyn=Math.round(doty);
-  
+
+  var start=0;
+
   if ( Math.sqrt((dotxn-dotx)^2+(dotyn-doty)^2) > 0.5 ) {
 	  
 	  dotxn=lastdotx;
@@ -155,7 +131,7 @@ function connectdot(x,y) {
     }
   }
   
-   circle(x,y,1,'red',context); 
+   circle(x,y,1,'red');
 }
 
 function ncoord(x) {
@@ -191,7 +167,3 @@ function drawlines() {
 	} 
 }
 
-
-function leavedot(dot) {
-
-}
