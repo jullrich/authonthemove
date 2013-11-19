@@ -24,7 +24,9 @@ class Userdata
     public function load($sMethod)
     {
         global ${$sMethod};
+        print "loading $sMethod";
         $this->aUserData = ${$sMethod};
+        print_r($this->aUserData);
     }
 
     protected function _retrieve($sName)
