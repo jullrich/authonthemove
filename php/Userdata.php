@@ -23,9 +23,10 @@ class Userdata
 
     public function load($sMethod)
     {
-        global ${$sMethod};
+        global ${_$sMethod};
         print "loading $sMethod";
-        $this->aUserData = ${$sMethod};
+
+        $this->aUserData = ${_$sMethod};
         print_r($this->aUserData);
     }
 
