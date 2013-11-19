@@ -64,7 +64,6 @@ class Userdata
 function safe_out($Data,$sTemplate='',$sContext='HTML') {
     $aValues=array();
     $aClean=array();
-    print "$Data $sContext";
     if ( ! is_array($Data) ) {
         $aValues['data']=$Data;
     } else {
@@ -75,6 +74,7 @@ function safe_out($Data,$sTemplate='',$sContext='HTML') {
         /** @var $sValue string */
         $aClean[$sKey]=safe_encode($sValue,$sContext);
     }
+    print_r($aClean);
     if ( $sTemplate=='' ) {
         return join('',array_values($aClean));
     }
@@ -100,7 +100,6 @@ function safe_encode($sString,$sContext) {
     print "encode $sString $sContext";
     switch ($sContext) {
         case "HTML":
-            print "ht";
             return htmlentities($sString,ENT_QUOTES,"UTF-8");
         case "JS":
             return "";
