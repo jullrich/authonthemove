@@ -21,5 +21,6 @@ You enrolled into our system. You submitted the following information:
     <tr><td>Grid Size:</td><td><?php safe_out($nNumDots) ?></td></tr>
     <tr><td>Pattern:</td><td><?php safe_out($sPattern) ?></td></tr>
 </table>
+<a href="/list.html">back to index</a>
     </body>
 </html>
