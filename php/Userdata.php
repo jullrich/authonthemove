@@ -30,7 +30,6 @@ class Userdata
     protected function _retrieve($sName)
     {
         if (array_key_exists($sName,$this->aUserData)) {
-            print "found";
             return $this->aUserData[$sName];
         }
         return false;
@@ -65,7 +64,7 @@ class Userdata
 function safe_out($Data,$sTemplate='',$sContext='HTML') {
     $aValues=array();
     $aClean=array();
-    print "$sData $sContext";
+    print "$Data $sContext";
     if ( ! is_array($Data) ) {
         $aValues['data']=$Data;
     } else {
@@ -98,8 +97,10 @@ function safe_out($Data,$sTemplate='',$sContext='HTML') {
  */
 
 function safe_encode($sString,$sContext) {
+    print "encode $sString $sContext";
     switch ($sContext) {
         case "HTML":
+            print "ht";
             return htmlentities($sString,ENT_QUOTES,"UTF-8");
         case "JS":
             return "";
