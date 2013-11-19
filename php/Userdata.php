@@ -74,15 +74,15 @@ function safe_out($Data,$sTemplate='',$sContext='HTML') {
         /** @var $sValue string */
         $aClean[$sKey]=safe_encode($sValue,$sContext);
     }
-    print_r($aClean);
     if ( $sTemplate=='' ) {
-        return join('',array_values($aClean));
+
+        print join('',array_values($aClean));
     }
     foreach ( $aClean as $sKey=>$sValue ) {
         preg_replace("/%%$sKey%%/",$sValue,$sTemplate);
     }
     $sTemplate=preg_replace('/%%[^%]+%%/','',$sTemplate);
-    return $sTemplate;
+    print $sTemplate;
 }
 
 /**
@@ -97,7 +97,6 @@ function safe_out($Data,$sTemplate='',$sContext='HTML') {
  */
 
 function safe_encode($sString,$sContext) {
-    print "encode $sString $sContext";
     switch ($sContext) {
         case "HTML":
             return htmlentities($sString,ENT_QUOTES,"UTF-8");
