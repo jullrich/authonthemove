@@ -24,15 +24,14 @@ class Userdata
     public function load($sMethod)
     {
         global ${"_".$sMethod};
-        print "loading $sMethod";
-
         $this->aUserData = ${"_".$sMethod};
-        print_r($this->aUserData);
     }
 
     protected function _retrieve($sName)
     {
+        print "r $sName";
         if (array_key_exists($this->aUserData, $sName)) {
+            print "found";
             return $this->aUserData[$sName];
         }
         return false;
