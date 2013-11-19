@@ -40,7 +40,7 @@ footer {
 	text-align: center;
 	border-top: 1px solid black;
 	position: absolute;
-	bottom: 0px;
+	bottom: 0;
 }
 
 footer a {
@@ -67,7 +67,6 @@ form {
 	 -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
     -khtml-border-radius: 20px;
-    border-radius: 20px;
 }
 	
   

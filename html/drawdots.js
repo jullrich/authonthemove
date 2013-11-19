@@ -35,6 +35,14 @@ function rectangle(xmin,ymin,xmax,ymax,color) {
       context.stroke();
 }
 
+function senddots() {
+    var patternstring;
+    for (var i = 0; i < pattern.length; i+=1) {
+        patternstring=patternstring+'|'+pattern[i];
+    }
+    document.getElementById('pattern').value=patternstring;
+}
+
 function drawdots() {
 	var dots=document.getElementById('dots');
 	var width=parseInt(window.innerWidth);
