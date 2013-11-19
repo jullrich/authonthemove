@@ -30,6 +30,7 @@ class Userdata
     protected function _retrieve($sName)
     {
         print "r $sName";
+        print_r($this->aUserData);
         if (array_key_exists($this->aUserData, $sName)) {
             print "found";
             return $this->aUserData[$sName];
