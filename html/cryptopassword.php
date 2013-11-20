@@ -6,11 +6,14 @@ $oUserData=new Userdata();
 $sUsername=$oUserData->get_alphanum('username');
 $sCryptoPassword=$oUserData->get_password('cryptopassword');
 
+$sNonce=sha1(rand(0,PHP_INT_MAX).time());
+
+
 /* storing username and password. Here, we are just testing, so we keep it in the session */
 
 $_SESSION['username']=$sUsername;
 $_SESSION['password']=$sCryptoPassword;
-
+$_SESSION['nonce']=$sNonce;
 
 ?>
 <!DOCTYPE HTML>
@@ -34,8 +37,9 @@ $_SESSION['password']=$sCryptoPassword;
         <label for="password">Password</label>
         <input type="password" name="password" id="password" value="" autocomplete="off">
         <label for="password2">Retype Password</label>
-        <input type="hidden" id="nonce" value="" >
+        <input type="hidden" id="nonce" value="<?php safe_out($sNonce,'HTML'); ?>" >
         <input type="hidden" id="cryptopassword" value="">
+
         <input type="submit" value="Submit">
     </form>
 </div>
