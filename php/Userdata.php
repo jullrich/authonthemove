@@ -11,6 +11,11 @@ class Userdata
     protected $aUserData = array();
     protected $sMethod;
 
+    /**
+     * Constructor. Calls 'load' method to retrieve data.
+     *
+     * @param string $sMethod
+     */
     public function __construct($sMethod='')
     {
         if ( $sMethod=='' ) {
@@ -21,11 +26,24 @@ class Userdata
         $this->load($this->sMethod);
     }
 
+    /**
+     * Load data from super global
+     *
+     * @param $sMethod
+     */
+
     public function load($sMethod)
     {
         global ${"_".$sMethod};
         $this->aUserData = ${"_".$sMethod};
     }
+
+    /**
+     * private function to retrieve data
+     *
+     * @param $sName
+     * @return bool
+     */
 
     protected function _retrieve($sName)
     {
@@ -35,6 +53,25 @@ class Userdata
         return false;
     }
 
+    /**
+     * retrieving passwords. This function doesn't do any validation. Everything goes in passwords.
+     *
+     * @param $sName
+     * @return bool
+     */
+
+    public function get_password($sName) {
+        return $this->_retrieve($sName);
+    }
+
+    /**
+     * Retrieve an integer within a given range.
+     *
+     * @param $sName
+     * @param int $nMin
+     * @param int $nMax
+     * @return bool
+     */
     public function get_int($sName, $nMin = 0, $nMax = PHP_INT_MAX)
     {
         $sValue = $this->_retrieve($sName);
@@ -45,6 +82,13 @@ class Userdata
         return false;
     }
 
+    /**
+     * Retrieve an alphanumeric string
+     *
+     * @param $sName
+     * @param int $nMaxLen
+     * @return bool
+     */
     public function get_alphanum($sName, $nMaxLen=1000 ) {
         $sValue=$this->_retrieve($sName);
         if ( $sValue && strlen($sValue<$nMaxLen) ) {
@@ -52,6 +96,14 @@ class Userdata
         }
         return false;
     }
+
+    /**
+     * retrieve a string from user data and validate it using a regular expression.
+     *
+     * @param $sName
+     * @param $sRegex
+     * @return bool
+     */
     public function get_regextext($sName, $sRegex) {
         $sValue=$this->_retrieve($sName);
         if ( preg_match($sRegex,$sValue)) {
@@ -61,6 +113,14 @@ class Userdata
     }
 
 }
+
+/**
+ * helper function to output a string safely for a specific context.
+ *
+ * @param $Data
+ * @param string $sTemplate
+ * @param string $sContext
+ */
 
 function safe_out($Data,$sTemplate='',$sContext='HTML') {
     $aValues=array();

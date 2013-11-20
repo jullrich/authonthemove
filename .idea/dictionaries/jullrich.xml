@@ -5,6 +5,8 @@
       <w>connectdot</w>
       <w>coordn</w>
       <w>creativecommons</w>
+      <w>cryptopass</w>
+      <w>cryptopassword</w>
       <w>dotline</w>
       <w>dotnum</w>
       <w>dotsenroll</w>
@@ -27,8 +29,10 @@
       <w>lastdoty</w>
       <w>licensor</w>
       <w>mousemove</w>
+      <w>mypasswordhash</w>
       <w>ncoord</w>
       <w>numdots</w>
+      <w>passwordhash</w>
       <w>patternstring</w>
       <w>redistributors</w>
       <w>senddots</w>

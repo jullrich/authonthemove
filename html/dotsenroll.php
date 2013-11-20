@@ -2,6 +2,7 @@
 
 require_once('../php/Userdata.php');
 $oUserData=new Userdata();
+/** @var $oUserData Userdata */
 $sUsername=$oUserData->get_alphanum('username');
 $nNumDots=$oUserData->get_int('numdots',3,20);
 $sPattern=$oUserData->get_regextext('pattern','/^[0-9|]+$/');
@@ -21,6 +22,6 @@ You enrolled into our system. You submitted the following information:
     <tr><td>Grid Size:</td><td><?php safe_out($nNumDots) ?></td></tr>
     <tr><td>Pattern:</td><td><?php safe_out($sPattern) ?></td></tr>
 </table>
-<a href="/list.html">back to index</a>
+<a href="list.html">back to index</a>
     </body>
 </html>
